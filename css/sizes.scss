@@ -1,0 +1,30 @@
+@mixin xsMin {
+    @media only screen and (min-width:480px) {
+        @content;
+    }
+}
+
+@mixin smMin {
+    @media only screen and (min-width:768px) {
+        @content;
+    }
+}
+
+@mixin mdMin {
+    @media only screen and (min-width:992px) {
+        @content;
+    }
+}
+
+@mixin lgMin {
+    @media only screen and (min-width:1200px) {
+        @content;
+    }
+}
+
+@mixin xLgMin {
+    @media only screen and (min-width:1800px) {
+        @content;
+    }
+}
+
