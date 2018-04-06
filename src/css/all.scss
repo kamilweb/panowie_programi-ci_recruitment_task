@@ -19,9 +19,14 @@ h2, p {
   margin: 0;
 }
 
+.main__wrapper {
+  overflow: hidden;
+}
+
 main {
-  max-width: 400px;
+  max-width: 320px;
   margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 header {
@@ -128,4 +133,77 @@ header {
 
 .ticket__price-all {
   font-weight: 700;
+}
+
+.section__form {
+  display: flex;
+  justify-content: flex-end;
+}
+
+form {
+  box-sizing: border-box;
+  padding-left: 28px;
+  margin-right: -200px;
+  width: 462px;
+  height: 207px;
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30px;
+  @include smMin {
+    width: 422px;
+    height: 238px;
+  }
+  @include lgMin {
+    width: 507px;
+    height: 263px;
+    background-color: #ececec;
+  }
+}
+
+input {
+  width: 178px;
+  padding: 0 10px;
+  height: 29px;
+  line-height: 1.57;
+  letter-spacing: 2.1px;
+  margin-bottom: 12px;
+}
+
+.form__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0bc0ce;
+  height: 33px;
+  font-size: 14px;
+  border: none;
+  font-weight: bold;
+  line-height: 1.57;
+  letter-spacing: 2.1px;
+  text-align: center;
+  color: #fff;
+  width: 127px;
+  margin-left: 75px;
+  transition: .3s ease background-color;
+  cursor: pointer;
+  &:hover, &:focus {
+    outline: none;
+    background-color: #5045b8;
+    .form__button-circle svg g {
+      stroke: #fff;
+    }
+  }
+}
+
+.form__button-circle {
+  background-size: 100% 100%;
+  width: 26px;
+  height: 21px;
+  display: inline-block;
+  margin-left: 12px;
+  svg g {
+    transition: .3s ease stroke;
+  }
 }

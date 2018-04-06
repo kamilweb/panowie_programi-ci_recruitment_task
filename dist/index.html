@@ -8,7 +8,8 @@
     <script src="all.js" type="text/babel"></script>
 </head>
 <body>
-    <main>
+    <div class="main__wrapper">
+        <main>
         <header>
             <div class="header__logo"></div>
         </header>
@@ -39,8 +40,27 @@
             </section>
             <section class="section__form">
                 <div class="circle circle--small"></div>
+                <form action="">
+                    <input type="text" id="name" placeholder="Imię i nazwisko">
+                    <input type="text" id="ticketsNumber" placeholder="Liczba biletów">
+                    <button type="submit" class="form__button">
+                        Zamów
+                        <span class="form__button-circle">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21" viewBox="0 0 26 21">
+                                <g fill="none" fill-rule="evenodd" stroke="#202020" stroke-width="2">
+                                    <path d="M20.122 19.2c0 .442-.42.8-.939.8H2.287c-.519 0-.939-.358-.94-.8v-8.4c0-.441.42-.8.94-.8h16.896c.518 0 .939.359.939.8v8.4z"/>
+                                    <path stroke-linecap="round" d="M3.557 14.399H8.87M13.428 12h2.276M3.557 17.6h.76m3.036 0h.759m3.037 0h.758m3.037 0h.758"/>
+                                    <path d="M4.468 9.141L3.613 7.09c-.176-.422.073-.888.556-1.041l15.73-4.999c.482-.153 1.016.064 1.192.485l3.392 8.138a.717.717 0 0 1-.03.62.894.894 0 0 1-.525.42L19.876 12M4.354 8.868l17.478-5.554"/>
+                                    <path stroke-linecap="round" d="M17.913 8l2.209-1"/>
+                                </g>
+                            </svg>
+
+                        </span>
+                    </button>
+                </form>
             </section>
         </div>
     </main>
+    </div>
 </body>
 </html>
