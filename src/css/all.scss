@@ -11,6 +11,7 @@ body {
   letter-spacing: 1.8px;
 
   @include smMin {
+    letter-spacing: 2.1px;
     font-size: 14px;
   }
 }
@@ -24,14 +25,27 @@ h2, p {
 }
 
 main {
-  max-width: 320px;
+  width: 320px;
   margin: 0 auto;
   padding-bottom: 30px;
+  @include smMin {
+    width: 680px;
+  }
+}
+
+.main__bottom {
+  @include smMin {
+    display: flex;
+  }
 }
 
 header {
   position: relative;
   padding: 15px 9px;
+  @include smMin {
+    padding: 31px 9px;
+  }
+
   &:after {
     content: '';
     display: inline-block;
@@ -41,6 +55,11 @@ header {
     position: absolute;
     top: 15px;
     right: 5px;
+    @include smMin {
+      width: 98px;
+      top: 30px;
+      right: -81px;
+    }
   }
 }
 
@@ -49,16 +68,23 @@ header {
   height: 59px;
   background: url('./images/logo.png') no-repeat;
   background-size: 100% 100%;
+  @include smMin {
+    background: url('./images/logo-big.png') no-repeat;
+    background-size: 100% 100%;
+  }
 
   @include smMin {
-    width: 178px;
-    height: 76px;
+    width: 160px;
+    height: 72px;
   }
 }
 
 .section__circles {
   position: relative;
   padding: 29px 31px;
+  @include smMin {
+    padding: 55px 0 55px 323px;
+  }
 }
 
 .title {
@@ -68,6 +94,9 @@ header {
   font-size: 24px;
 
   @include smMin {
+    font-size: 48px;
+    line-height: 1.04;
+    letter-spacing: 5.1px;
   }
 
   &.title--top {
@@ -82,6 +111,11 @@ header {
   line-height: 1.35;
   margin-top: 14px;
   cursor: pointer;
+  @include smMin {
+    line-height: 1.57;
+    margin-top: 34px;
+  }
+
   &:hover {
     .desc__arrow {
       right: -10px;
@@ -108,15 +142,40 @@ header {
   &.circle--big {
     width: 164px;
     height: 164px;
-    object-fit: contain;
     background: radial-gradient(circle at 0 0, #3023ae, #30efdc 47%, #8698c6 73%, #c86dd7);
     top: -44px;
     right: 5px;
     z-index: -1;
+    @include smMin {
+      width: 391px;
+      height: 391px;
+      top: -81px;
+      right: 239px;
+    }
   }
   &.circle--medium,
   &.circle--small {
-    background: radial-gradient(circle at 77% 31%, #5045b8, #343caf 4%, #00ffe5 72%, #8698c6 73%, #c86dd7);
+    display: none;
+    background: radial-gradient(circle at 77% 31%,#5045b8,#343caf 4%,#00ffe5 74%,#8698c6 85%,#c86dd7);
+  }
+  &.circle--medium {
+    @include smMin {
+      display: block;
+      width: 244px;
+      height: 244px;
+      z-index: -1;
+      top: -105px;
+      right: 116px;
+    }
+  }
+  &.circle--small {
+    @include smMin {
+      display: block;
+      width: 107px;
+      height: 107px;
+      top: -67px;
+      right: 45px;
+    }
   }
 }
 
@@ -124,11 +183,19 @@ header {
   margin-top: 16px;
   padding: 0 31px;
   width: 160px;
+  @include smMin {
+    margin-top: 138px;
+    padding: 0 71px;
+    width: 200px;
+  }
 }
 
 .ticket__price {
   margin-top: 16px;
   margin-bottom: 5px;
+  @include smMin {
+    margin-top: 45px;
+  }
 }
 
 .ticket__price-all {
@@ -138,20 +205,28 @@ header {
 .section__form {
   display: flex;
   justify-content: flex-end;
+  margin-top: 30px;
+  @include smMin {
+    display: block;
+    margin-top: 183px;
+    margin-left: 57px;
+    position: relative;
+  }
 }
 
 form {
   box-sizing: border-box;
   padding-left: 28px;
-  margin-right: -200px;
-  width: 462px;
+  margin-right: -230px;
+  width: 492px;
   height: 207px;
   background-color: #f0f0f0;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin-top: 30px;
   @include smMin {
+    margin-right: 0;
+    padding-left: 65px;
     width: 422px;
     height: 238px;
   }
@@ -168,7 +243,14 @@ input {
   height: 29px;
   line-height: 1.57;
   letter-spacing: 2.1px;
-  margin-bottom: 12px;
+  margin-bottom: 13px;
+  font-size: 14px;
+  border: solid 1px #979797;
+  font-weight: 300;
+  @include smMin {
+    width: 161px;
+    height: 31px;
+  }
 }
 
 .form__button {
@@ -188,22 +270,39 @@ input {
   margin-left: 75px;
   transition: .3s ease background-color;
   cursor: pointer;
+  @include smMin {
+    width: 115px;
+    margin-left: 68px;
+  }
+
   &:hover, &:focus {
     outline: none;
     background-color: #5045b8;
-    .form__button-circle svg g {
+    .form__button-cards svg g {
       stroke: #fff;
     }
   }
 }
 
-.form__button-circle {
+.form__button-cards {
   background-size: 100% 100%;
   width: 26px;
   height: 21px;
   display: inline-block;
   margin-left: 12px;
+  @include smMin {
+    margin-left: 6px;
+  }
   svg g {
     transition: .3s ease stroke;
   }
+}
+
+.cloud {
+  display: inline-block;
+  width: 37px;
+  height: 22px;
+  background: url('./images/cloud.svg') no-repeat;
+  background-size: 100% 100%;
+  margin-top: 80px;
 }
