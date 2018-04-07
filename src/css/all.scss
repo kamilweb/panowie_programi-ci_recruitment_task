@@ -203,7 +203,7 @@ header {
 .section__price {
   margin-top: 16px;
   padding: 0 31px;
-  width: 160px;
+  width: 170px;
   @include smMin {
     margin-top: 138px;
     padding: 0 71px;
@@ -264,20 +264,67 @@ form {
     height: 263px;
     background-color: #ececec;
   }
+
+  &.error {
+    .error__wrapper {
+      font-size: 12px;
+      display: block;
+    }
+  }
+
+  &.success {
+    .step__form {
+      display: none;
+    }
+    .step__success {
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      display: block;
+      animation: fadeIn 1s ease forwards;
+    }
+  }
+}
+
+.error__wrapper {
+  display: none;
+  color: red;
+  margin-bottom: 13px;
+}
+
+.step__form,
+.step__success {
+  width: 201px;
+  @include smMin {
+    width: 183px;
+  }
+  @include mdMin {
+    width: 230px;
+  }
+}
+
+.step__success {
+  display: none;
+  font-size: 26px;
+  font-weight: 700;
+  @include smMin {
+    width: 200px;
+  }
 }
 
 .input__wrapper {
   position: relative;
   display: inline-flex;
-  width: 201px;
   height: 33px;
   margin-bottom: 13px;
+  width: 100%;
   @include smMin {
-    width: 183px;
     height: 33px;
-  }
-  @include mdMin {
-    width: 230px;
   }
   &:focus {
     outline: none;
@@ -312,8 +359,6 @@ input {
       }
     }
   }
-
-
 }
 
 .focus-border {

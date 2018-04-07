@@ -39,23 +39,27 @@
             <section class="section__form">
                 <div class="circle circle--small"></div>
                 <form id="form" action="">
-                    <div class="input__wrapper">
-                        <input type="text" id="name" placeholder="Imię i nazwisko">
-                        <span class="focus-border">
+                    <div class="step__form">
+                        <div class="input__wrapper">
+                            <input pattern="^[a-zA-Z_ ]*$" type="text" id="name" placeholder="Imię i nazwisko" required>
+                            <span class="focus-border">
                             <i></i>
                         </span>
-                    </div>
-                    <div class="input__wrapper">
-                        <input type="text" id="ticketsNumber" placeholder="Liczba biletów">
-                        <span class="focus-border">
+                        </div>
+                        <div class="input__wrapper">
+                            <input type="number" id="ticketsNumber" placeholder="Liczba biletów" required>
+                            <span class="focus-border">
                             <i></i>
                         </span>
-                    </div>
-                    <button id="submit" type="submit" class="form__button">
+                        </div>
+                        <div class="error__wrapper">
+                            Wystąpił błąd! Popraw błędne pola!
+                        </div>
+                        <button id="submit" type="submit" class="form__button">
                         <span class="form__button-text">
                             Zamów
                         </span>
-                        <span class="form__button-cards">
+                            <span class="form__button-cards">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21" viewBox="0 0 26 21">
                                 <g fill="none" fill-rule="evenodd" stroke="#202020" stroke-width="2">
                                     <path d="M20.122 19.2c0 .442-.42.8-.939.8H2.287c-.519 0-.939-.358-.94-.8v-8.4c0-.441.42-.8.94-.8h16.896c.518 0 .939.359.939.8v8.4z"/>
@@ -65,8 +69,12 @@
                                 </g>
                             </svg>
                         </span>
-                        <span class="hover-bg"></span>
-                    </button>
+                            <span class="hover-bg"></span>
+                        </button>
+                    </div>
+                    <div class="step__success">
+                        Dziękujemy za zamówienia!
+                    </div>
                 </form>
             </section>
         </div>
