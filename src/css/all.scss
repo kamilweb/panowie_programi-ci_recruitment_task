@@ -30,6 +30,10 @@ main {
   padding-bottom: 30px;
   @include smMin {
     width: 680px;
+    padding-bottom: 36px;
+  }
+  @include mdMin {
+    width: 956px;
   }
 }
 
@@ -60,6 +64,9 @@ header {
       top: 30px;
       right: -81px;
     }
+    @include mdMin {
+      right: 2px;
+    }
   }
 }
 
@@ -84,6 +91,9 @@ header {
   padding: 29px 31px;
   @include smMin {
     padding: 55px 0 55px 323px;
+  }
+  @include mdMin {
+    padding-left: 562px;
   }
 }
 
@@ -152,6 +162,9 @@ header {
       top: -81px;
       right: 239px;
     }
+    @include mdMin {
+      right: 481px;
+    }
   }
   &.circle--medium,
   &.circle--small {
@@ -167,6 +180,10 @@ header {
       top: -105px;
       right: 116px;
     }
+    @include mdMin {
+      top: 66px;
+      right: 314px;
+    }
   }
   &.circle--small {
     @include smMin {
@@ -175,6 +192,10 @@ header {
       height: 107px;
       top: -67px;
       right: 45px;
+    }
+    @include mdMin {
+      top: -44px;
+      right: 36px;
     }
   }
 }
@@ -187,6 +208,9 @@ header {
     margin-top: 138px;
     padding: 0 71px;
     width: 200px;
+  }
+  @include mdMin {
+    padding-left: 83px;
   }
 }
 
@@ -212,13 +236,17 @@ header {
     margin-left: 57px;
     position: relative;
   }
+  @include mdMin {
+    margin-top: 159px;
+    margin-left: 141px;
+  }
 }
 
 form {
   box-sizing: border-box;
   padding-left: 28px;
-  margin-right: -230px;
-  width: 492px;
+  margin-right: -30px;
+  width: 292px;
   height: 207px;
   background-color: #f0f0f0;
   display: flex;
@@ -230,30 +258,91 @@ form {
     width: 422px;
     height: 238px;
   }
-  @include lgMin {
+  @include mdMin {
+    padding-left: 81px;
     width: 507px;
     height: 263px;
     background-color: #ececec;
   }
 }
 
-input {
-  width: 178px;
-  padding: 0 10px;
-  height: 29px;
-  line-height: 1.57;
-  letter-spacing: 2.1px;
+.input__wrapper {
+  position: relative;
+  display: inline-flex;
+  width: 201px;
+  height: 33px;
   margin-bottom: 13px;
-  font-size: 14px;
-  border: solid 1px #979797;
-  font-weight: 300;
   @include smMin {
-    width: 161px;
-    height: 31px;
+    width: 183px;
+    height: 33px;
+  }
+  @include mdMin {
+    width: 230px;
+  }
+  &:focus {
+    outline: none;
   }
 }
 
+input {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+  line-height: 1.57;
+  outline: none;
+  letter-spacing: 2.1px;
+  font-size: 14px;
+  box-sizing: border-box;
+  border: solid 1px #979797;
+  font-weight: 300;
+  &:focus {
+    outline: none;
+    ~ .focus-border {
+      &:before,
+      &:after {
+        width: 100%;
+        transition: 0.3s;
+      }
+      i {
+        &:before,
+        &:after {
+          height: 100%;
+          transition: 0.4s;
+        }
+      }
+    }
+  }
+
+
+}
+
+.focus-border {
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #3399FF;
+    transition: 0.3s;
+  }
+  &:after{
+    top: auto; bottom: 0; left: auto; right: 0;
+  }
+  i {
+    &:before,
+    &:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #3399FF; transition: 0.4s;}
+    &:after{left: auto; right: 0; top: auto; bottom: 0;}
+
+  }
+}
+
+
+
 .form__button {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -274,17 +363,60 @@ input {
     width: 115px;
     margin-left: 68px;
   }
+  @include mdMin {
+    width: 115px;
+    margin-left: 115px;
+  }
 
-  &:hover, &:focus {
+  &:hover,
+  &:focus {
     outline: none;
-    background-color: #5045b8;
+    .hover-bg {
+      &:before {
+        transition: 0.3s;
+        width: 50%;
+        height: 100%;
+      }
+      &:after {
+        transition: 0.3s;
+        width: 50%;
+        height: 100%;
+      }
+    }
     .form__button-cards svg g {
       stroke: #fff;
     }
   }
 }
 
+.hover-bg {
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+    background-color: #5045b8;
+    transition: 0.3s;
+    z-index: 0;
+  }
+  &:after{
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: 0;
+  }
+}
+
+.form__button-text {
+  z-index: 1;
+}
+
 .form__button-cards {
+  z-index: 1;
   background-size: 100% 100%;
   width: 26px;
   height: 21px;
@@ -299,10 +431,13 @@ input {
 }
 
 .cloud {
-  display: inline-block;
-  width: 37px;
-  height: 22px;
-  background: url('./images/cloud.svg') no-repeat;
-  background-size: 100% 100%;
-  margin-top: 80px;
+  display: none;
+  @include smMin {
+    display: inline-block;
+    width: 37px;
+    height: 22px;
+    background: url('./images/cloud.svg') no-repeat;
+    background-size: 100% 100%;
+    margin-top: 80px;
+  }
 }

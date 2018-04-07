@@ -5,7 +5,7 @@
     <title>Panowie Programiści - zadanie rekrutacyjne</title>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,700|Playfair+Display:700&amp;subset=latin-ext" rel="stylesheet">
     <link href="all.css" rel="stylesheet" type="text/css">
-    <script src="all.js" type="text/babel"></script>
+    <script src="all.js" type="text/javascript"></script>
 </head>
 <body>
     <div class="main__wrapper">
@@ -19,7 +19,7 @@
             <h2 class="title title--top">
                 Zadanie rekrutacyjne
             </h2>
-            <p class="desc">
+            <p id="desc" class="desc">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent augue dolor, varius et tortor elementum.
                 <span class="desc__arrow"></span>
             </p>
@@ -32,17 +32,29 @@
                 </h2>
                 <p class="ticket__price">Cena biletu: 20 zł</p>
                 <p class="ticket__price-all">Podsumowanie:
-                    <span id="ticketsPrice">XX zł</span>
+                    <span id="ticketsPrice">XX</span> zł
                 </p>
                 <span class="cloud"></span>
             </section>
             <section class="section__form">
                 <div class="circle circle--small"></div>
-                <form action="">
-                    <input type="text" id="name" placeholder="Imię i nazwisko">
-                    <input type="text" id="ticketsNumber" placeholder="Liczba biletów">
-                    <button type="submit" class="form__button">
-                        Zamów
+                <form id="form" action="">
+                    <div class="input__wrapper">
+                        <input type="text" id="name" placeholder="Imię i nazwisko">
+                        <span class="focus-border">
+                            <i></i>
+                        </span>
+                    </div>
+                    <div class="input__wrapper">
+                        <input type="text" id="ticketsNumber" placeholder="Liczba biletów">
+                        <span class="focus-border">
+                            <i></i>
+                        </span>
+                    </div>
+                    <button id="submit" type="submit" class="form__button">
+                        <span class="form__button-text">
+                            Zamów
+                        </span>
                         <span class="form__button-cards">
                             <svg xmlns="http://www.w3.org/2000/svg" width="26" height="21" viewBox="0 0 26 21">
                                 <g fill="none" fill-rule="evenodd" stroke="#202020" stroke-width="2">
@@ -53,6 +65,7 @@
                                 </g>
                             </svg>
                         </span>
+                        <span class="hover-bg"></span>
                     </button>
                 </form>
             </section>

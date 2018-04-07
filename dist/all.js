@@ -1,1 +1,1 @@
-"use strict";
+"use strict";window.onload=function(){document.getElementById("desc").addEventListener("click",function(){var e=document.querySelector("header").offsetHeight,t=document.getElementsByClassName("section__circles")[0].offsetHeight;window.scroll({top:e+t+50,left:0,behavior:"smooth"})})};
