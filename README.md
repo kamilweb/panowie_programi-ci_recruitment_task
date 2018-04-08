@@ -1,5 +1,6 @@
 ## pp_recruitment_task
-Recruitment task for Panowie Programiści company
+Recruitment task for Panowie Programiści company.
+
 Finally version of project you can find in [dist](./dist) folder.
 ## Start project
 To start editing project, clone repository to your folder and run in your terminal: ```npm i```.
