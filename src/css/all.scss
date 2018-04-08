@@ -1,14 +1,14 @@
 @charset "UTF-8";
-@import './sizes.scss';
-
+@import "./sizes.scss";
 
 body {
-  font-family: 'Lato', sans-serif;
+  font-family: "Lato", sans-serif;
   font-size: 12px;
   font-weight: 300;
   color: #000;
   margin: 0;
   letter-spacing: 1.8px;
+  transform: perspective(1000px);
 
   @include smMin {
     letter-spacing: 2.1px;
@@ -16,7 +16,8 @@ body {
   }
 }
 
-h2, p {
+h2,
+p {
   margin: 0;
 }
 
@@ -45,13 +46,14 @@ main {
 
 header {
   position: relative;
+  z-index: 1;
   padding: 15px 9px;
   @include smMin {
     padding: 31px 9px;
   }
 
   &:after {
-    content: '';
+    content: "";
     display: inline-block;
     width: 44px;
     height: 1px;
@@ -73,10 +75,10 @@ header {
 .header__logo {
   width: 133px;
   height: 59px;
-  background: url('./images/logo.png') no-repeat;
+  background: url("./images/logo.png") no-repeat;
   background-size: 100% 100%;
   @include smMin {
-    background: url('./images/logo-big.png') no-repeat;
+    background: url("./images/logo-big.png") no-repeat;
     background-size: 100% 100%;
   }
 
@@ -89,6 +91,8 @@ header {
 .section__circles {
   position: relative;
   padding: 29px 31px;
+  transform: translateY(-100px);
+  opacity: 0;
   @include smMin {
     padding: 55px 0 55px 323px;
   }
@@ -98,7 +102,7 @@ header {
 }
 
 .title {
-  font-family: 'Playfair Display', serif;
+  font-family: "Playfair Display", serif;
   font-weight: 700;
   letter-spacing: 2.6px;
   font-size: 24px;
@@ -107,14 +111,6 @@ header {
     font-size: 48px;
     line-height: 1.04;
     letter-spacing: 5.1px;
-  }
-
-  &.title--top {
-
-  }
-
-  &.title--bottom {
-
   }
 }
 .desc {
@@ -135,15 +131,24 @@ header {
 
 .desc__arrow {
   display: inline-block;
-  background: url('./images/arrow.svg') no-repeat;
+  background: url("./images/arrow.svg") no-repeat;
   background-size: 100% 100%;
   width: 68px;
   height: 11px;
   margin-left: 8px;
   position: relative;
   top: 2px;
-  transition: .3s ease;
+  transition: 0.3s ease;
   right: 0;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
 }
 
 .circle {
@@ -152,10 +157,13 @@ header {
   &.circle--big {
     width: 164px;
     height: 164px;
-    background: radial-gradient(circle at 0 0, #3023ae, #30efdc 47%, #8698c6 73%, #c86dd7);
     top: -44px;
     right: 5px;
     z-index: -1;
+    transform-origin: center center;
+    transform-style: preserve-3d;
+    transform: translateZ(0px);
+    overflow: hidden;
     @include smMin {
       width: 391px;
       height: 391px;
@@ -165,11 +173,24 @@ header {
     @include mdMin {
       right: 481px;
     }
+
+    &:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      animation: rotate 30s linear infinite;
+      background: radial-gradient(circle at 0 0, #3023ae, #30efdc 47%, #8698c6 73%, #c86dd7);
+    }
   }
+
   &.circle--medium,
   &.circle--small {
     display: none;
-    background: radial-gradient(circle at 77% 31%,#5045b8,#343caf 4%,#00ffe5 74%,#8698c6 85%,#c86dd7);
+    background: radial-gradient(circle at 77% 31%, #5045b8, #343caf 4%, #00ffe5 74%, #8698c6 85%, #c86dd7);
   }
   &.circle--medium {
     @include smMin {
@@ -204,6 +225,9 @@ header {
   margin-top: 16px;
   padding: 0 31px;
   width: 170px;
+  position: relative;
+  transform: translateY(-100px);
+  opacity: 0;
   @include smMin {
     margin-top: 138px;
     padding: 0 71px;
@@ -230,6 +254,8 @@ header {
   display: flex;
   justify-content: flex-end;
   margin-top: 30px;
+  transform: translateY(-100px);
+  opacity: 0;
   @include smMin {
     display: block;
     margin-top: 183px;
@@ -370,21 +396,35 @@ input {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: #3399FF;
+    background-color: #3399ff;
     transition: 0.3s;
   }
-  &:after{
-    top: auto; bottom: 0; left: auto; right: 0;
+  &:after {
+    top: auto;
+    bottom: 0;
+    left: auto;
+    right: 0;
   }
   i {
     &:before,
-    &:after{content: ""; position: absolute; top: 0; left: 0; width: 2px; height: 0; background-color: #3399FF; transition: 0.4s;}
-    &:after{left: auto; right: 0; top: auto; bottom: 0;}
-
+    &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 0;
+      background-color: #3399ff;
+      transition: 0.4s;
+    }
+    &:after {
+      left: auto;
+      right: 0;
+      top: auto;
+      bottom: 0;
+    }
   }
 }
-
-
 
 .form__button {
   position: relative;
@@ -402,7 +442,7 @@ input {
   color: #fff;
   width: 127px;
   margin-left: 75px;
-  transition: .3s ease background-color;
+  transition: 0.3s ease background-color;
   cursor: pointer;
   @include smMin {
     width: 115px;
@@ -448,7 +488,7 @@ input {
     transition: 0.3s;
     z-index: 0;
   }
-  &:after{
+  &:after {
     left: auto;
     right: 0;
     top: auto;
@@ -471,7 +511,7 @@ input {
     margin-left: 6px;
   }
   svg g {
-    transition: .3s ease stroke;
+    transition: 0.3s ease stroke;
   }
 }
 
@@ -481,8 +521,13 @@ input {
     display: inline-block;
     width: 37px;
     height: 22px;
-    background: url('./images/cloud.svg') no-repeat;
+    background: url("./images/cloud.svg") no-repeat;
     background-size: 100% 100%;
-    margin-top: 80px;
+    position: absolute;
+    bottom: 0;
+    left: 71px;
+  }
+  @include mdMin {
+    left: 83px;
   }
 }

@@ -5,7 +5,7 @@ let sass = require('gulp-sass');
 let cleanCSS = require('gulp-clean-css');
 let autoprefixer = require('gulp-autoprefixer');
 let babel = require('gulp-babel');
-var uglify = require('gulp-uglify');
+let uglify = require('gulp-uglify');
 
 gulp.task('sass', () => {
   gulp.src('./src/css/all.scss')
@@ -36,4 +36,4 @@ gulp.task('es6:watch', () => {
 });
 
 gulp.task('build', ['sass', 'es6']);
-gulp.task('default', ['sass:watch', 'es6:watch']);
+gulp.task('default', ['build', 'sass:watch', 'es6:watch']);
