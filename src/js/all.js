@@ -1,10 +1,5 @@
 window.onload = () => {
   // INIT ANIMATIONS
-  TweenLite.to(".section__circles", 0.8, {
-    opacity: 1,
-    transform: "translateY(0)",
-    ease: Power2.easeOut
-  });
   TweenLite.to(".section__price", 0.8, {
     delay: 0.3,
     opacity: 1,
@@ -18,17 +13,18 @@ window.onload = () => {
     ease: Power2.easeOut
   });
 
-  // DESC SCROLL
+  // SCROLL TO FORM
   let desc = document.getElementById("desc");
   let form = document.getElementById("form");
   function scrollToForm() {
-    let headerHeight = document.querySelector("header").offsetHeight;
-    let sectionCirclesHeight = document.getElementsByClassName("section__circles")[0].offsetHeight;
-    window.scroll({
-      top: headerHeight + sectionCirclesHeight + 50,
-      left: 0,
-      behavior: "smooth"
-    });
+    let i = 10;
+    let int = setInterval(() => {
+      let headerHeight = document.querySelector("header").offsetHeight;
+      let sectionCirclesHeight = document.getElementsByClassName("section__circles")[0].offsetHeight;
+      window.scrollTo(0, i);
+      i += 10;
+      if (i >= headerHeight + sectionCirclesHeight + 50) clearInterval(int);
+    }, 10);
   }
   desc.addEventListener("click", scrollToForm);
 
@@ -53,21 +49,15 @@ window.onload = () => {
       if (!ticketsNumberRegExp.test(ticketsNumber.value) || ticketsNumber.value === "0") {
         ticketsNumber.style.borderColor = "red";
       }
-      return false;
     } else {
       form.classList.add("success");
     }
   }
 
-  function submitForm() {
-    event.preventDefault();
-    validateForm();
-  }
-
-  form.addEventListener("submit", submitForm);
+  form.addEventListener("submit", validateForm);
   form.addEventListener("keydown", event => {
     if (event.key === "Enter") {
-      submitForm();
+      validateForm();
     }
   });
 
